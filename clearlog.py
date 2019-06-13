@@ -6,6 +6,7 @@ import argparse
 
 
 def clear_directory_older_than(directory, days):
+    print "Xoá dữ liệu tạo trước %s ngày thư mục %s " % (days, directory)
     now = time.time()
     cutoff = now - (days * 86400)
     files = os.listdir(directory)
