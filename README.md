@@ -9,4 +9,6 @@ optional arguments:
 
 # cron
 chạy m ngày lúc 00:00 
+```bash
 0 0 * * * /usr/bin/python /root/script/clearlog.py -days 15 -d "/var/log" > /dev/null 2>&1
+```
