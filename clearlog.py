@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 import os
 import time
+from datetime import datetime
 import argparse
 
 
@@ -12,8 +13,9 @@ def clear_directory_older_than(directory, days):
     files = os.listdir(directory)
     for xfile in files:
         t = os.stat(os.path.join(directory, xfile))
-        c = t.st_ctime
-        if c < cutoff:
+        c = t.st_mtime
+        if c < cutoff and not os.path.isdir(os.path.join(directory, xfile)):
+            print "Xoá: %s | tạo lúc: %s" % (os.path.join(directory, xfile), datetime.fromtimestamp(c).strftime('%d-%m-%Y %H:%M:%S'))
             os.remove(os.path.join(directory, xfile))
 
 
